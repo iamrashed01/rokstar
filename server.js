@@ -1,5 +1,6 @@
 const startupDebugger = require('debug')('app:startupDebugger');
 const bodyParser = require('body-parser');
+const config = require('config');
 const cors = require('cors');
 const morgan = require('morgan');
 const express = require('express');
@@ -29,8 +30,7 @@ app.use('/api/about', about);
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
     startupDebugger(`Listening on port ${port}...`)
-    const uri = "mongodb+srv://rashed01:Pass.123@cluster0.zoko0.mongodb.net/rokstar?retryWrites=true&w=majority";
-    mongoose.connect(uri, {
+    mongoose.connect(config.get('db'), {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useFindAndModify: false

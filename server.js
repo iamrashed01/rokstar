@@ -30,7 +30,7 @@ app.use('/api/about', about);
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
     startupDebugger(`Listening on port ${port}...`)
-    mongoose.connect(config.get('db'), {
+    mongoose.connect('mongodb+srv://rashed01:Pass.123@cluster0.zoko0.mongodb.net/rokstar?retryWrites=true&w=majority', {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useFindAndModify: false

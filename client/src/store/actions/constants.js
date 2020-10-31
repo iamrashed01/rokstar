@@ -1,0 +1,2 @@
+export const THROW_SUCCESS = 'THROW_SUCCESS'
+export const THROW_ERROR = 'THROW_ERROR'

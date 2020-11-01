@@ -1,6 +1,7 @@
 import * as constants from '../actions/constants'
 
 const init = {
+  user: null,
   error: {}
 }
 
@@ -10,16 +11,21 @@ const metaReducer = (state = init, action) => {
       return {
         ...state,
         error: {
-          msg: action.data
+          message: action.data
         }
       }
     case constants.THROW_ERROR:
       return {
         ...state,
         error: {
-          msg: action.data
+          message: action.data
         }
       }
+    case constants.SET_USER:
+      return {
+        ...state,
+        user: action.data
+      };
     default:
       return state
   }

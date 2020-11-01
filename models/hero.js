@@ -14,8 +14,7 @@ const Hero = mongoose.model('Hero', new mongoose.Schema({
         required: true
     },
     backgroundImage: {
-        type: String,
-        required: true
+        type: String
     }
 }))
 

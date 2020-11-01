@@ -1,15 +1,32 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import { Element } from 'react-scroll'
+import { connect } from 'react-redux';
+import { ToastContainer, toast } from 'react-toastify'
 import Header from '../../components/Header';
 // import Prealoader from '../../components/uiStyle/Prealoader';
 import Hero from '../Hero';
 import About from '../About';
-import './App.css';
+import Auth from '../../components/Auth';
 
-function App() {
+import { getUser } from '../../store/actions';
+
+import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
+
+function App(props) {
+
+  useEffect(() => {
+    props.getUser();
+  }, [])
+
+  const error = props.error.message;
+  if (error) {
+    toast.error(error)
+  }
   return (
     <Fragment>
       {/* <Prealoader/> */}
+      <Auth />
       <Header />
       <Element name="home">
         <Hero />
@@ -17,8 +34,15 @@ function App() {
       <Element name="about">
         <About />
       </Element>
+      <ToastContainer />
     </Fragment>
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    error: state.meta.error
+  }
+}
+
+export default connect(mapStateToProps, { getUser })(App);

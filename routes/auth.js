@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const bcrypt = require('bcrypt');
 const multer = require('multer');
 const upload = multer();
@@ -33,6 +34,7 @@ router.post('/login', upload.none(), async (req, res) => {
 
     res.status(200).json({
         token: token,
+        data: _.pick(user, ['full_name', 'email', 'designation']),
         message: 'Succesfully Log in.',
         success: true
     });

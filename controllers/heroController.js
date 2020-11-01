@@ -11,17 +11,12 @@ async function postHeroController(req, res, next) {
         message: error.details[0].message
     })
 
-    if (!req.file) return res.status(400).json({
-        message: "\"backgroundImage\" is required"
-    });
-
     let hero = await Hero.findOne();
 
     if (hero === null) {
         let hero = await new Hero({
             title: req.body.title,
-            designation: req.body.designation,
-            backgroundImage: req.file.path
+            designation: req.body.designation
         })
         await hero.save();
         return res.status(200).send(hero);
@@ -29,7 +24,6 @@ async function postHeroController(req, res, next) {
 
     hero.title = req.body.title;
     hero.designation = req.body.designation;
-    hero.backgroundImage = req.file.path;
 
     await hero.save();
     res.status(200).send(hero);

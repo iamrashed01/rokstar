@@ -41,6 +41,7 @@
 .logo a img {
   max-width: 43px;
 }
+
 .main-menu nav ul {
   text-align: right;
 }
@@ -51,15 +52,14 @@
 
 .main-menu nav ul li a {
   display: block;
-  color: #fff!important;
+  color: #fff !important;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0;
   padding: 35px 17px;
   position: relative;
   cursor: pointer;
-  text-decoration: none
-  ;
+  text-decoration: none;
 }
 
 .main-menu nav ul li a:before {
@@ -172,6 +172,10 @@
   text-transform: uppercase;
 }
 
+.slider-content h2 span {
+  margin-right: 15px;
+}
+
 .slider-content h4 {
   font-size: 19px;
   font-weight: 300;
@@ -184,6 +188,8 @@
 .slider-content h4 span {
   display: inline-block !important;
   letter-spacing: 0;
+  min-width: 11px;
+  margin-right: 10px;
 }
 
 .txt1-wrap {
@@ -737,3 +743,29 @@
 /*============================================
 * END Footer Area
 *=============================================*/
+
+.editForm {
+  position: relative;
+  height: 1px;
+  width: 100%;
+}
+
+.editForm form {
+  position: absolute;
+  left: 0;
+  bottom: 100%;
+  background: #202020;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  width: 500px;
+  padding: 15px;
+}
+
+.editForm form input {
+  width: 100%;
+  background: #272626;
+  border: none;
+  margin-bottom: 10px;
+  color: #fff;
+  padding: 5px;
+}

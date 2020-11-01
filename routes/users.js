@@ -2,12 +2,16 @@ const multer = require('multer');
 const upload = multer();
 const express = require('express');
 const router = express.Router();
+const auth = require('../middleware/auth');
+
 const {
     createUserController,
-    updateUserController
+    updateUserController,
+    getUserController
 } = require('../controllers/userController');
 
 router.post('/', upload.none(), createUserController);
-router.put('/', upload.none(), updateUserController);
+router.put('/', auth, upload.none(), updateUserController);
+router.get('/', auth, getUserController);
 
 module.exports = router;

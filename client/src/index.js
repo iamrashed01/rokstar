@@ -7,17 +7,15 @@ import store from "./store";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'font-awesome/css/font-awesome.min.css';
-import './doc/styles/typography.css';
 import './doc/styles/default-css.css';
+import './doc/styles/typography.css';
 import './doc/styles/styles.css';
 import './doc/styles/responsive.css';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
+  <Provider store={store}>
     <App />
-    </Provider>
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 )
 

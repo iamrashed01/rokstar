@@ -66,7 +66,27 @@ async function updateUserController(req, res, next) {
     })
 }
 
+async function getUserController(req, res, next) {
+    let user = await User.findOne({
+        _id: req.user._id
+    });
+
+    console.log(req.user, 'req.user');
+
+    if (!user) return res.status(400).json({
+        message: 'User Not Found.',
+        success: false
+    })
+
+    res.status(200).json({
+        data: user,
+        message: 'data retrieved succesfully',
+        success: true
+    })
+}
+
 module.exports = {
     createUserController,
-    updateUserController
+    updateUserController,
+    getUserController
 }

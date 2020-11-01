@@ -1,4 +1,4 @@
 {
-    "jwtPrivateKey": "",
+    "jwtPrivateKey": "rashed",
     "db": "mongodb://localhost/rokstar"
 }

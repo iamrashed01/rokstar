@@ -42,7 +42,7 @@ app.get('/', (req, res) => {
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
     startupDebugger(`Listening on port ${port}...`)
-    mongoose.connect(config.get('rokstar_db'), {
+    mongoose.connect(config.get('db'), {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify: false

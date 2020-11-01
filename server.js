@@ -12,12 +12,10 @@ const hero = require('./routes/hero');
 const about = require('./routes/about');
 const users = require('./routes/users');
 const auth = require('./routes/auth');
-const { patch } = require('./routes/hero');
 
 app.use(express.json());
 app.use(cors());
 app.use(morgan('dev'));
-app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
@@ -44,7 +42,7 @@ app.get('/', (req, res) => {
 const port = process.env.PORT || 3001;
 app.listen(port, () => {
     startupDebugger(`Listening on port ${port}...`)
-    mongoose.connect(`mongodb+srv://${process.env.db_username}:${process.env.db_password}@cluster0.zoko0.mongodb.net/rokstar?retryWrites=true&w=majority`, {
+    mongoose.connect(config.get('rokstar_db'), {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useFindAndModify: false

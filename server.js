@@ -20,6 +20,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+app.use('/uploads', express.static('uploads'));
 
 app.use('/api/auth', auth);
 app.use('/api/users', users);

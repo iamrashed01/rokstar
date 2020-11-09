@@ -8,8 +8,6 @@ import { getHeroDataAction, updateHeroAction } from '../../store/actions';
 import { appUrl } from '../../utils/requests';
 import Delete from '../../components/uiStyle/Delete';
 
-import background from '../../doc/images/bg/slider-bg.jpg';
-
 function HeroSection(props) {
 
   const [state, setState] = useState({
@@ -87,7 +85,7 @@ function HeroSection(props) {
 
   return (
     <div className="slider-area">
-      <Parallax bgImage={state.filePreview ? state.filePreview : backgroundImage !== undefined ? appUrl + backgroundImage : background} strength={500} bgImageStyle={{ height: '100%', width: '100%', objectFit: 'cover' }}>
+      <Parallax bgImage={state.filePreview ? state.filePreview : backgroundImage !== undefined ? appUrl + backgroundImage : ''} strength={500} bgImageStyle={{ height: '100%', width: '100%', objectFit: 'cover' }}>
         <div className="container">
           <div className="slider-content">
             <Flip top opposite when={props.user && showhText}>

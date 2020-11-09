@@ -1,17 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { Parallax } from "react-parallax";
+import Zoom from 'react-reveal/Zoom';
+import Flip from 'react-reveal/Flip';
 import { Link } from 'react-scroll'
 import { connect } from 'react-redux';
 import { getHeroDataAction, updateHeroAction } from '../../store/actions';
 import { appUrl } from '../../utils/requests';
+import Delete from '../../components/uiStyle/Delete';
+
 import background from '../../doc/images/bg/slider-bg.jpg';
 
 function HeroSection(props) {
 
   const [state, setState] = useState({
     title: '',
-    designation: ''
+    designation: '',
+    filePreview: null
   })
+
+  const [showhText, setShowhText] = useState(false);
 
   const changeHandler = e => {
     setState({
@@ -26,7 +33,6 @@ function HeroSection(props) {
 
   useEffect(() => {
     if (props.hero.title !== undefined) {
-      // console.log(props.hero.designation, 'hero designation=======');
       setState({
         ...state,
         title: props.hero.title,
@@ -37,11 +43,40 @@ function HeroSection(props) {
 
   const updateHandler = e => {
     if (e.key === 'Enter') {
-      const data = {
-        title: state.title,
-        designation: state.designation
-      }
-      props.updateHeroAction(data);
+      const formData = new FormData();
+      formData.append('title', state.title);
+      formData.append('designation', state.designation);
+      props.updateHeroAction(formData);
+      setShowhText(false);
+    }
+  }
+
+  const heroTextHandler = () => {
+    setShowhText(!showhText);
+  }
+
+  const updateImage = e => {
+    const file = e.target.files[0];
+
+    const reader = new FileReader();
+
+    reader.addEventListener("load", function () {
+      // convert image file to base64 string
+      setState({
+        ...state, filePreview: reader.result
+      });
+    }, false);
+
+    if (file) {
+      reader.readAsDataURL(file);
+    }
+
+    const formData = new FormData();
+    formData.append('title', state.title);
+    formData.append('designation', state.designation);
+    formData.append('backgroundImage', file);
+    if (file !== undefined) {
+      props.updateHeroAction(formData);
     }
   }
 
@@ -52,17 +87,28 @@ function HeroSection(props) {
 
   return (
     <div className="slider-area">
-      <Parallax bgImage={backgroundImage !== undefined ? appUrl + backgroundImage : background} strength={500} bgImageStyle={{ height: '100%', objectFit: 'cover' }}>
+      <Parallax bgImage={state.filePreview ? state.filePreview : backgroundImage !== undefined ? appUrl + backgroundImage : background} strength={500} bgImageStyle={{ height: '100%', width: '100%', objectFit: 'cover' }}>
         <div className="container">
           <div className="slider-content">
-            {props.user ? (
+            <Flip top opposite when={props.user && showhText}>
               <div className="editForm">
                 <form>
                   <input type="text" placeholder="Title" onKeyDown={updateHandler} value={state.title} name="title" onChange={changeHandler} />
                   <input type="text" placeholder="Designation" onKeyDown={updateHandler} value={state.designation} name="designation" onChange={changeHandler} />
                 </form>
               </div>
-            ) : null}
+            </Flip>
+            {props.user && (
+              <Delete onChangeHandler={heroTextHandler} />
+            )}
+            {props.user && (
+              <div className="editImage">
+                <label htmlFor="backgroundImage">
+                  <Delete icon="picture-o" />
+                </label>
+                <input accept="image/jpeg" onChange={updateImage} id="backgroundImage" type="file" />
+              </div>
+            )}
             <h2 className="txtanim1">
               {titleArray.length > 0 && (
                 titleArray.map((el, key) => (

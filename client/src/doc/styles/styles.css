@@ -162,6 +162,75 @@
   width: 101%;
 }
 
+.slider-content {
+  position: relative;
+}
+
+.slider-content .edit {
+  left: 0;
+  top: -30px;
+}
+
+.edit {
+  position: absolute;
+  z-index: 9;
+  color: #ffffff;
+  padding: 8px;
+  display: block;
+  line-height: 16px;
+  border-radius: 2px;
+  text-align: center;
+  padding-left: 10px;
+  cursor: pointer;
+}
+
+.edit:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  background: #3d3b3b;
+}
+
+.edit:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -2;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  border: 1px solid #3d3b3b;
+  animation: klimb 2000ms linear 0s infinite;
+}
+
+@keyframes klimb {
+  0% {
+    opacity: 1;
+    transform: scale(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(5);
+  }
+}
+
+.editImage {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.editImage input {
+  opacity: 0;
+  visibility: hidden;
+}
+
 .slider-content h2 {
   font-size: 55px;
   color: #ffffff;

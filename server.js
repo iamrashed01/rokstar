@@ -1,7 +1,6 @@
 const path = require('path');
 const startupDebugger = require('debug')('app:startupDebugger');
 const bodyParser = require('body-parser');
-const config = require('config');
 const cors = require('cors');
 const morgan = require('morgan');
 const express = require('express');

@@ -1,0 +1,81 @@
+.authWrapper {
+  background: #202020;
+  position: fixed;
+  right: -250px;
+  top: 100px;
+  z-index: 9;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-right: 0;
+  border-radius: 5px 0 0 5px;
+  padding: 30px;
+  display: inline-block;
+  width: 250px;
+  -webkit-transition: all 0.3s ease 0s;
+  transition: all 0.3s ease 0s;
+}
+
+.authWrapper.show {
+  right: 0;
+}
+
+.authWrapper .submit {
+  width: 100%;
+  font-size: 14px;
+}
+
+.authWrapper .icon {
+  background: #fff;
+  height: 70px;
+  width: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 50%;
+  margin: 0 auto 30px;
+}
+
+.authWrapper .icon i:before {
+  color: #232323;
+  font-size: 28px;
+}
+
+.authWrapper form .submit {
+  color: #fff;
+  background-color: #6576ff !important;
+  border-color: #6576ff !important;
+}
+
+.authWrapper form .submit:hover {
+  color: #fff;
+  background-color: #3f54ff !important;
+  border-color: #3249ff !important;
+}
+
+.form-control {
+  color: #232323 !important;
+  font-size: 13px !important;
+}
+
+.toggleAuth {
+  position: absolute;
+  left: -31px;
+  top: -1px;
+  background: #202020;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  height: 35px;
+  width: 35px;
+  border-radius: 4px 0 0 4px;
+  border-right: 0;
+  text-align: center;
+  color: #ffffe4;
+  cursor: pointer;
+  line-height: 34px;
+  padding-right: 3px;
+}
+/*# sourceMappingURL=style.css.map */
